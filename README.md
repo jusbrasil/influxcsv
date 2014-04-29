@@ -39,6 +39,8 @@ Or, if you prefer to run it with `foreman` (as it is run on Heroku):
 
     foreman start
 
+If you do use this app running on Heroku, you are encouraged to use it over SSL: https://influxcsv.herokuapp.com
+
 ## AUTHOR
 
 [Patrick Kaeding](http://kaeding.name)
