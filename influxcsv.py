@@ -1,3 +1,4 @@
+import os
 import json
 import csv
 import cStringIO
@@ -46,6 +47,9 @@ def proxy_influx():
         {"q": q, "db": db, "host": host, "port": port, "proto": proto}
   return Response(write_blobs(get_blobs(url, auth)), mimetype='text/csv')
 
+@app.route('/')
+def help():
+  return app.send_static_file('influxcsv.1.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
