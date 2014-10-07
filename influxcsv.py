@@ -42,9 +42,11 @@ def proxy_influx():
   host = request.args.get('host')
   port = request.args.get('port')
   proto = request.args.get('proto')
-  auth = request.headers['Authorization']
-  url = '%(proto)s://%(host)s:%(port)s/db/%(db)s/series?chunked=true&q=%(q)s' %\
-        {"q": q, "db": db, "host": host, "port": port, "proto": proto}
+  u = request.args.get('u')
+  p = request.args.get('p')
+  auth = request.headers.get('Authorization')
+  url = '%(proto)s://%(host)s:%(port)s/db/%(db)s/series?chunked=true&q=%(q)s&u=%(u)s&p=%(p)s' %\
+        {"q": q, "db": db, "host": host, "port": port, "proto": proto, "u": u, "p": p}
   return Response(write_blobs(get_blobs(url, auth)), mimetype='text/csv')
 
 @app.route('/')
